@@ -1,0 +1,300 @@
+/* --- CONFIGURACIÓN GLOBAL --- */
+#root {
+  display: block;
+  background-color: #f1f5f9;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+/* --- HEADER MODERNO --- */
+.header {
+  margin-bottom: 40px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+
+.header h1 {
+  background: linear-gradient(135deg, #0f172a 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* --- ZONA DE CARGA (UPLOAD) --- */
+.upload-card {
+  background-color: #f8fafc;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='%233B82F6' stroke-width='2' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.upload-card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.upload-card input[type="file"] {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* --- ESTILOS DEL SPINNER --- */
+.loading-state {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.spinner-modern {
+  width: 35px;
+  height: 35px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: #3b82f6;
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* --- CONTROLES SUPERIORES (Botón Excel) --- */
+.btn-excel {
+  background: linear-gradient(to bottom, #107c41, #0c5e31);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(16, 124, 65, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-excel:hover {
+  background: linear-gradient(to bottom, #158f4a, #0f6b39);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 10px -2px rgba(16, 124, 65, 0.3);
+}
+
+/* --- TABLA ESTILIZADA --- */
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+thead th {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 16px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+tbody tr {
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.currency-badge {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* --- INPUTS DE EDICIÓN --- */
+.edit-input, .edit-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-input:focus, .edit-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* --- BOTONES DE ACCIÓN  --- */
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+/* Editar */
+.btn-edit {
+  background-color: #eff6ff;
+  border-color: #dbeafe;
+}
+.btn-edit:hover {
+  background-color: #dbeafe;
+  transform: scale(1.05);
+}
+
+/* Eliminar */
+.btn-delete {
+  background-color: #fff1f2;
+  border-color: #ffe4e6;
+}
+.btn-delete:hover {
+  background-color: #ffe4e6;
+  transform: scale(1.05);
+}
+
+/* Guardar */
+.btn-save {
+  background-color: #ecfdf5;
+  border-color: #d1fae5;
+}
+.btn-save:hover {
+  background-color: #d1fae5;
+  transform: scale(1.05);
+}
+
+/* Cancelar */
+.btn-cancel {
+  background-color: #f1f5f9;
+  border-color: #e2e8f0;
+}
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+  transform: scale(1.05);
+}
+
+/* --- OVERLAY BLOQUEANTE Y MODAL --- */
+.overlay-bloqueante {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-carga {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-subtext {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
