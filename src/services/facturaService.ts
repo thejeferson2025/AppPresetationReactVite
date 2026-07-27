@@ -2,12 +2,10 @@ import type { Factura } from '../models/factura.model';
 
 const apiUrl = 'https://localhost:7161/api/facturas';
 
-// Temporal para manejar errores (consola)
 const handleError = (err: any) => {
-  // En fetch, los errores de red (como el SSL bypass) lanzan un TypeError
   if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
     console.warn('Conexión local establecida (SSL bypass)');
-    return []; // Retorna un arreglo vacío para que no explote la app
+    return []; 
   }
   throw err;
 };
@@ -34,7 +32,7 @@ export const FacturaService = {
       if (!response.ok) throw new Error('Error al subir el archivo');
       return await response.json();
     } catch (err) {
-      throw err; // Lanzamos el error para que el componente muestre el SweetAlert rojo
+      throw err;
     }
   },
 

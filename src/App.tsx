@@ -107,7 +107,6 @@ function App() {
     }
 
     const datosParaExcel = facturas.map((f, index) => {
-      // Corrección de fecha para el Excel
       const fechaLimpia = f.fecha ? f.fecha.toString().substring(0, 10).split('-').reverse().join('/') : '';
       return {
         'N°': index + 1,
@@ -141,16 +140,13 @@ function App() {
     setFacturas(prev => prev.map(f => f.id === id ? { ...f, editando: estado } : f));
   };
 
-  // CORRECCIÓN 1: Formateador simplificado para evitar cambios de zona horaria
   const formatForDateInput = (isoString: string) => {
     if (!isoString) return '';
     return isoString.toString().substring(0, 10);
   };
 
-  // Función para formatear la fecha en Modo Lectura (DD/MM/YYYY)
   const formatForDisplay = (isoString: string) => {
     if (!isoString) return '';
-    // Toma YYYY-MM-DD, lo separa por guiones, lo invierte a DD-MM-YYYY y lo une con barras
     return isoString.toString().substring(0, 10).split('-').reverse().join('/');
   };
 
@@ -203,12 +199,11 @@ function App() {
                 facturas.map((f, i) => (
                   <tr key={f.id}>
                     {!f.editando ? (
-                      // --- MODO LECTURA ---
+                      
                       <>
                         <td style={{ textAlign: 'center', fontWeight: 'bold', color: '#64748b' }}>{i + 1}</td>
                         <td>{f.emisor}</td>
                         <td>{f.nitOId}</td>
-                        {/* CORRECCIÓN 2: Mostrar fecha sin que le afecte la zona horaria */}
                         <td>{formatForDisplay(f.fecha)}</td>
                         <td style={{ fontWeight: 'bold' }}>{Number(f.totalPagar).toFixed(2)}</td>
                         <td><span className="currency-badge">{f.moneda}</span></td>
@@ -218,7 +213,7 @@ function App() {
                         </td>
                       </>
                     ) : (
-                      // --- MODO EDICIÓN ---
+                     
                       <>
                         <td style={{ textAlign: 'center', fontWeight: 'bold', color: '#64748b' }}>{i + 1}</td>
                         <td>
@@ -228,7 +223,6 @@ function App() {
                           <input className="edit-input" value={f.nitOId} onChange={(e) => handleEditChange(f.id, 'nitOId', e.target.value)} />
                         </td>
                         <td>
-                          {/* Usa el nuevo formateador de fecha para el input */}
                           <input className="edit-input" type="date" value={formatForDateInput(f.fecha)} onChange={(e) => handleEditChange(f.id, 'fecha', e.target.value)} />
                         </td>
                         <td>
