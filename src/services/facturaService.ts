@@ -1,6 +1,6 @@
 import type { Factura } from '../models/factura.model';
 
-const apiUrl = 'https://localhost:7161/api/facturas';
+const apiUrl = 'http://localhost:7071/api/Facturas';
 
 const handleError = (err: any) => {
   if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
