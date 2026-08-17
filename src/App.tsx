@@ -11,20 +11,26 @@ function App() {
   const [cargando, setCargando] = useState(false);
   
   const fileUploadRef = useRef<HTMLInputElement>(null);
+  
+  // Bandera de usuario 
+  const isEditingRef = useRef(false);
 
   useEffect(() => {
-
     cargarFacturas();
+    
     const intervalo = setInterval(() => {
-      cargarFacturas();
+      if (!isEditingRef.current) {
+        cargarFacturas();
+      }
     }, 5000);
-
+    
     return () => clearInterval(intervalo);
   }, []);
 
   const cargarFacturas = async () => {
     const data = await FacturaService.obtenerTodas();
     setFacturas(data.map((f: Factura) => ({ ...f, editando: false })));
+    isEditingRef.current = false; 
   };
 
   const onFileSelected = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -143,6 +149,7 @@ function App() {
   };
 
   const toggleEdit = (id: number, estado: boolean) => {
+    isEditingRef.current = estado;
     setFacturas(prev => prev.map(f => f.id === id ? { ...f, editando: estado } : f));
   };
 
