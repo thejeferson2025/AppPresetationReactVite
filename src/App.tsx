@@ -13,7 +13,13 @@ function App() {
   const fileUploadRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+
     cargarFacturas();
+    const intervalo = setInterval(() => {
+      cargarFacturas();
+    }, 5000);
+
+    return () => clearInterval(intervalo);
   }, []);
 
   const cargarFacturas = async () => {
